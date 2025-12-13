@@ -1,0 +1,30 @@
+[Unit]
+Description=Bambulab Prometheus Exporter
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=bambulab-prometheus
+Group=bambulab-prometheus
+WorkingDirectory=/opt/bambulab-prometheus
+Environment="PATH=/opt/bambulab-prometheus/venv/bin"
+ExecStart=/opt/bambulab-prometheus/venv/bin/python /opt/bambulab-prometheus/src/exporter.py --config /opt/bambulab-prometheus/config.yaml
+
+# Restart policy
+Restart=on-failure
+RestartSec=10
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/bambulab-prometheus
+
+# Resource limits
+MemoryLimit=256M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

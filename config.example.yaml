@@ -1,0 +1,30 @@
+# Bambulab Prometheus Exporter Configuration
+
+exporter:
+  # Port to expose metrics on
+  port: 9100
+  
+  # Logging level: DEBUG, INFO, WARNING, ERROR
+  log_level: INFO
+  
+  # How often to update metrics (seconds)
+  update_interval: 5
+  
+  # Bind address (0.0.0.0 for all interfaces)
+  bind_address: "0.0.0.0"
+
+# Configure your Bambu Lab printers
+printers:
+  # First printer
+  - name: "bambu_a1_main"
+    ip: "192.168.1.100"
+    access_code: "12345678"
+    serial: "01S00A000000000"
+    enabled: true
+    
+  # Second printer (example - remove if not needed)
+  # - name: "bambu_p1s"
+  #   ip: "192.168.1.101"
+  #   access_code: "87654321"
+  #   serial: "01P00A000000001"
+  #   enabled: true
