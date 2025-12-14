@@ -1,0 +1,234 @@
+# AI Assistant Rules for Development Projects
+
+## Git Configuration
+When making commits, always use:
+- **Name**: goozoon
+- **Email**: 48757340+goozoon@users.noreply.github.com
+
+## Commit Message Format
+Use conventional commits format:
+- `feat:` - New features or functionality
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes only
+- `chore:` - Maintenance tasks (cleanup, dependencies, config)
+- `refactor:` - Code restructuring without behavior changes
+- `style:` - Formatting, whitespace, etc.
+- `test:` - Adding or updating tests
+
+**Examples:**
+```
+feat: add camera feed endpoint
+fix: resolve YAML parsing in config
+docs: update installation guide
+chore: remove temporary test files
+refactor: simplify state detection logic
+```
+
+## Before Every Commit
+- [ ] Remove all temporary/debug/test files
+- [ ] Update README.md if adding features or changing usage
+- [ ] Update relevant documentation (METRICS.md, TROUBLESHOOTING.md, etc.)
+- [ ] Test that changes actually work
+- [ ] Use descriptive commit messages that explain WHY, not just WHAT
+
+## Code Style
+
+### Python
+- Follow PEP 8 style guide
+- Add type hints for function parameters and return values
+- Use docstrings for all functions and classes
+- Prefer explicit over implicit
+- Add comments explaining WHY, not WHAT the code does
+
+### YAML
+- Use 2 spaces for indentation (never tabs)
+- Add comments for complex configurations
+- Validate with `yamllint` or similar tools
+
+### Markdown
+- Use GitHub-flavored markdown
+- Include tables for structured data
+- Use GitHub alerts: `> [!NOTE]`, `> [!WARNING]`, `> [!IMPORTANT]`, `> [!TIP]`
+- Add emojis for visual scanning (✅, ❌, 🚀, ⚠️, 💡, etc.)
+- Use collapsible sections for long content
+- Include code blocks with language identifiers
+
+### Shell Scripts
+- Use `#!/bin/bash` shebang
+- Add comments for complex logic
+- Validate inputs
+- Provide helpful error messages
+- Make scripts idempotent when possible
+
+## Documentation Standards
+
+### README.md Structure
+1. Project title and description
+2. Screenshot/demo (if applicable)
+3. Features list
+4. Prerequisites/Requirements (use tables)
+5. Installation (both automated and manual)
+6. Configuration
+7. Usage examples
+8. Troubleshooting
+9. Contributing
+10. License
+11. Acknowledgments/References
+
+### When to Create Separate Docs
+Create dedicated files when content exceeds ~200 lines or covers distinct topics:
+- `METRICS.md` - Detailed metric documentation
+- `TROUBLESHOOTING.md` - Common issues and solutions
+- `DECISIONS.md` - Architectural and design decisions
+- `CHANGELOG.md` - Version history
+- `CONTRIBUTING.md` - Contribution guidelines
+
+### DECISIONS.md Content
+Document major design choices including:
+- What was decided
+- Why this approach was chosen
+- What alternatives were considered
+- Trade-offs and implications
+- References to external libraries/projects used
+- Inspiration sources
+- Reasoning for NOT building from scratch
+
+**Format:**
+```markdown
+## Decision Title
+
+**Decision:** Brief statement of what was decided
+
+**Reasons:**
+- Bullet point explanations
+- Focus on WHY, not HOW
+- Include trade-offs
+
+**Alternatives Considered:**
+- What else was evaluated
+- Why it wasn't chosen
+```
+
+## Dependencies and Attribution
+
+### When Using External Libraries
+Always document in DECISIONS.md or README.md:
+- Library name and purpose
+- Source URL/repository
+- License type
+- Reason for choosing this library
+- Version constraints (if any)
+
+### Acknowledging Inspiration
+If project structure, patterns, or significant code ideas come from other projects:
+- Credit the source
+- Link to original project
+- Explain what was adapted and why
+
+## Project Organization
+
+### File Structure
+```
+project-name/
+├── src/              # Source code
+├── docs/             # Additional documentation
+├── tests/            # Test files
+├── config/           # Configuration examples
+├── scripts/          # Utility scripts
+├── .cursorrules      # This file
+├── README.md         # Main documentation
+├── DECISIONS.md      # Design decisions
+├── LICENSE           # License file
+└── requirements.txt  # Python dependencies (or package.json, etc.)
+```
+
+### Temporary Files to Always Exclude
+- `test_*.py` (unless in tests/ directory)
+- `debug_*.py`
+- `fix_*.py`
+- `add_*.py` (temporary scripts)
+- `update_*.py` (temporary scripts)
+- `*.pyc`, `__pycache__/`
+- `.DS_Store`
+- `*.swp`, `*.swo`
+- Editor-specific files (`.vscode/`, `.idea/`)
+- `node_modules/`, `venv/`, `.venv/`
+
+## Git Workflow
+
+### Branch Strategy
+- `main` - Production-ready code
+- `dev` - Development work (if needed)
+- Feature branches for major changes
+
+### Private vs Public Repos
+- **Private (Gitea/GitLab)**: Keep full commit history, all experiments
+- **Public (GitHub)**: Clean history, squash commits before publishing
+- Document this strategy in DECISIONS.md
+
+### Commit Frequency
+- Commit often during development (private repo)
+- Squash/clean before pushing to public repo
+- Each commit should be atomic and focused
+
+## Communication Style
+
+### In Code Comments
+- Be concise but clear
+- Explain WHY, not WHAT
+- Reference issue numbers when fixing bugs
+- Use TODO/FIXME/NOTE/HACK markers appropriately
+
+### In Documentation
+- Write for beginners, but don't patronize
+- Provide both simple and advanced examples
+- Include troubleshooting for common issues
+- Use active voice
+- Be direct and practical
+
+### In Commit Messages
+- First line: Brief summary (50 chars max)
+- Blank line
+- Detailed explanation if needed (72 chars per line)
+- Reference issues: `Fixes #123` or `Related to #456`
+
+## Testing Philosophy
+- Test important functionality before committing
+- Document manual test procedures if no automated tests
+- Include example commands/outputs in documentation
+- Verify installation instructions work on clean systems
+
+## Security Considerations
+- Never commit credentials, API keys, or secrets
+- Use example/template config files
+- Document security best practices in README
+- Mention firewall/network requirements
+- Explain why certain permissions are needed
+
+## Performance Awareness
+- Document resource requirements (CPU, RAM, disk)
+- Mention performance implications of design choices
+- Provide optimization tips for large-scale deployments
+- Include monitoring/observability considerations
+
+## Version Management
+- Use semantic versioning (if publishing releases)
+- Update CHANGELOG.md for notable changes
+- Tag releases in Git
+- Document breaking changes clearly
+
+## Error Handling
+- Provide helpful error messages
+- Suggest solutions in error output
+- Log errors appropriately
+- Document common error scenarios in troubleshooting
+
+## Final Checklist Before Pushing
+1. All temporary files removed
+2. Code tested and working
+3. Documentation updated
+4. Commit message follows conventions
+5. No secrets or credentials in code
+6. README reflects current state
+7. DECISIONS.md updated if design changed
+8. Git author/email correct
