@@ -832,7 +832,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "bambu_print_speed_percent{printer=\"$printer\"} and on(printer) bambu_printer_state{printer=\"$printer\"} == 1",
+          "expr": "bambu_print_speed_percent{printer=\"$printer\"}",
           "refId": "A",
           "instant": true,
           "legendFormat": ""
