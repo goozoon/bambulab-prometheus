@@ -818,7 +818,12 @@
           "fields": "",
           "values": false
         },
-        "textMode": "value"
+        "textMode": "value",
+        "text": {
+          "valueSize": 38
+        },
+        "showPercentChange": false,
+        "wideLayout": true
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -834,8 +839,7 @@
         }
       ],
       "title": "Print Speed",
-      "type": "stat",
-      "noValue": "--"
+      "type": "stat"
     },
     {
       "datasource": {
@@ -1366,7 +1370,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "noValue": "--"
         },
         "overrides": []
       },
@@ -1405,8 +1410,7 @@
         }
       ],
       "title": "Current File",
-      "type": "stat",
-      "noValue": "--"
+      "type": "stat"
     },
     {
       "datasource": {
@@ -1427,7 +1431,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "noValue": "--"
         },
         "overrides": []
       },
@@ -1488,7 +1493,8 @@
               }
             ]
           },
-          "unit": "mm"
+          "unit": "mm",
+          "noValue": "--"
         },
         "overrides": []
       },

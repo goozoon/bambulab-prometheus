@@ -1283,7 +1283,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "noValue": "--"
         },
         "overrides": []
       },
@@ -1322,8 +1323,7 @@
         }
       ],
       "title": "Current File",
-      "type": "stat",
-      "noValue": "--"
+      "type": "stat"
     },
     {
       "datasource": {
