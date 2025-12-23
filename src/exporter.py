@@ -317,9 +317,7 @@ class BambuExporter:
                     self.logger.debug(f"Error getting chamber temp for '{name}': {e}")
                 
                 # Set online status based on whether we received any data
-                if data_received:
-                    metrics.printer_online.labels(printer=name).set(1)
-                else:
+                if not data_received:
                     self.logger.warning(f"Printer '{name}' connected but not sending data (might be powered off)")
                     metrics.printer_online.labels(printer=name).set(0)
                     
@@ -338,6 +336,9 @@ class BambuExporter:
                     metrics.printer_state.labels(printer=name).set(0)
                     self.logger.debug(f"Cleared metrics for offline printer '{name}'")
                     continue
+                
+                # Printer is online and sending data
+                metrics.printer_online.labels(printer=name).set(1)
                 
                 # Print progress metrics
                 try:
