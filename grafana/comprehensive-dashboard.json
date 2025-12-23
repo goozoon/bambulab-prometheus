@@ -1360,6 +1360,15 @@
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "empty",
+                "result": {
+                  "text": "--"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -1394,7 +1403,9 @@
             "lastNotNull"
           ]
         },
-        "textMode": "name"
+        "textMode": "name",
+        "showPercentChange": false,
+        "wideLayout": true
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -1403,7 +1414,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "bambu_current_file_info{printer=\"$printer\"} and on(printer) bambu_printer_state{printer=\"$printer\"} == 1",
+          "expr": "bambu_current_file_info{printer=\"$printer\"}",
           "refId": "A",
           "instant": true,
           "legendFormat": "{{filename}}"
