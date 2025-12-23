@@ -827,14 +827,15 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "bambu_print_speed_percent{printer=\"$printer\"}",
+          "expr": "bambu_print_speed_percent{printer=\"$printer\"} and on(printer) bambu_printer_state{printer=\"$printer\"} == 1",
           "refId": "A",
           "instant": true,
           "legendFormat": ""
         }
       ],
       "title": "Print Speed",
-      "type": "stat"
+      "type": "stat",
+      "noValue": "--"
     },
     {
       "datasource": {
@@ -1397,14 +1398,15 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "bambu_current_file_info{printer=\"$printer\"}",
+          "expr": "bambu_current_file_info{printer=\"$printer\"} and on(printer) bambu_printer_state{printer=\"$printer\"} == 1",
           "refId": "A",
           "instant": true,
           "legendFormat": "{{filename}}"
         }
       ],
       "title": "Current File",
-      "type": "stat"
+      "type": "stat",
+      "noValue": "--"
     },
     {
       "datasource": {
@@ -1541,7 +1543,7 @@
       "id": 19,
       "options": {
         "mode": "html",
-        "content": "<iframe src=\"http://192.168.0.111:9101/camera.html\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"min-height: 500px;\"></iframe>"
+        "content": "<iframe src=\"http://192.168.0.111:9091/camera.html\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"min-height: 500px;\"></iframe>"
       },
       "title": "Printer Camera Feed",
       "type": "text",
