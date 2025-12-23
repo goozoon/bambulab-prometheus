@@ -271,6 +271,17 @@ class BambuExporter:
                 if not printer.mqtt_client_connected():
                     self.logger.warning(f"Printer '{name}' not connected to MQTT")
                     metrics.printer_online.labels(printer=name).set(0)
+                    
+                    # Clear all metrics when printer is offline
+                    metrics.nozzle_target_temp.labels(printer=name).set(0)
+                    metrics.bed_target_temp.labels(printer=name).set(0)
+                    metrics.print_progress.labels(printer=name).set(0)
+                    metrics.print_remaining_time.labels(printer=name).set(0)
+                    metrics.current_layer.labels(printer=name).set(0)
+                    metrics.total_layers.labels(printer=name).set(0)
+                    metrics.print_speed.labels(printer=name).set(0)
+                    metrics.error_code.labels(printer=name).set(0)
+                    metrics.printer_state.labels(printer=name).set(0)
                     continue
                 
                 # Check if we're actually receiving data (printer might be off but MQTT still connected)
@@ -308,6 +319,19 @@ class BambuExporter:
                 else:
                     self.logger.warning(f"Printer '{name}' connected but not sending data (might be powered off)")
                     metrics.printer_online.labels(printer=name).set(0)
+                    
+                    # Clear all metrics when printer is offline to avoid stale data in Grafana
+                    metrics.nozzle_target_temp.labels(printer=name).set(0)
+                    metrics.bed_target_temp.labels(printer=name).set(0)
+                    metrics.print_progress.labels(printer=name).set(0)
+                    metrics.print_remaining_time.labels(printer=name).set(0)
+                    metrics.current_layer.labels(printer=name).set(0)
+                    metrics.total_layers.labels(printer=name).set(0)
+                    metrics.print_speed.labels(printer=name).set(0)
+                    metrics.error_code.labels(printer=name).set(0)
+                    metrics.printer_state.labels(printer=name).set(0)
+                    self.logger.debug(f"Cleared metrics for offline printer '{name}'")
+                    continue
                 
                 # Print progress metrics
                 try:
