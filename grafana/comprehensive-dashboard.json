@@ -1417,7 +1417,7 @@
           "expr": "bambu_current_file_info{printer=\"$printer\"}",
           "refId": "A",
           "instant": true,
-          "legendFormat": "{{filename}}"
+          "legendFormat": "{{ filename | default \"--\" }}"
         }
       ],
       "title": "Current File",
