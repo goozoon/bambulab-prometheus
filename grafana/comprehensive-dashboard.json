@@ -47,6 +47,15 @@
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "null": {
+                  "text": "--",
+                  "color": "gray"
+                }
+              },
+              "type": "null"
             }
           ],
           "thresholds": {
@@ -143,6 +152,15 @@
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "null": {
+                  "text": "--",
+                  "color": "gray"
+                }
+              },
+              "type": "null"
             }
           ],
           "thresholds": {
@@ -288,6 +306,15 @@
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "null": {
+                  "text": "--",
+                  "color": "gray"
+                }
+              },
+              "type": "null"
             }
           ],
           "thresholds": {
