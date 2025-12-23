@@ -273,8 +273,11 @@ class BambuExporter:
                     metrics.printer_online.labels(printer=name).set(0)
                     
                     # Clear all metrics when printer is offline
+                    metrics.nozzle_temp.labels(printer=name).set(0)
                     metrics.nozzle_target_temp.labels(printer=name).set(0)
+                    metrics.bed_temp.labels(printer=name).set(0)
                     metrics.bed_target_temp.labels(printer=name).set(0)
+                    metrics.chamber_temp.labels(printer=name).set(0)
                     metrics.print_progress.labels(printer=name).set(0)
                     metrics.print_remaining_time.labels(printer=name).set(0)
                     metrics.current_layer.labels(printer=name).set(0)
@@ -321,8 +324,11 @@ class BambuExporter:
                     metrics.printer_online.labels(printer=name).set(0)
                     
                     # Clear all metrics when printer is offline to avoid stale data in Grafana
+                    metrics.nozzle_temp.labels(printer=name).set(0)
                     metrics.nozzle_target_temp.labels(printer=name).set(0)
+                    metrics.bed_temp.labels(printer=name).set(0)
                     metrics.bed_target_temp.labels(printer=name).set(0)
+                    metrics.chamber_temp.labels(printer=name).set(0)
                     metrics.print_progress.labels(printer=name).set(0)
                     metrics.print_remaining_time.labels(printer=name).set(0)
                     metrics.current_layer.labels(printer=name).set(0)
