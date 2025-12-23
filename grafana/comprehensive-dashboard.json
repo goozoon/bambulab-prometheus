@@ -766,7 +766,25 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "--"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "null": {
+                  "text": "--",
+                  "color": "gray"
+                }
+              },
+              "type": "null"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -987,7 +1005,25 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "--"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "null": {
+                  "text": "--",
+                  "color": "gray"
+                }
+              },
+              "type": "null"
+            }
+          ],
           "max": 300,
           "min": 0,
           "thresholds": {
@@ -1060,7 +1096,25 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "--"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "null": {
+                  "text": "--",
+                  "color": "gray"
+                }
+              },
+              "type": "null"
+            }
+          ],
           "max": 120,
           "min": 0,
           "thresholds": {
