@@ -51,6 +51,8 @@ A lightweight Prometheus exporter for Bambu Lab 3D printers, designed for LXC/ba
 - **LAN Only** - Enables local network communication
 - **Dev Mode** - Enables MQTT access (required for this exporter)
 
+> [!NOTE]
+> **Static IP Address Required** - While Bambu Lab printers don't have a static IP option in their settings, you must configure a static IP address for your printer via your **router's DHCP settings**. This ensures the printer's IP doesn't change, which would break the exporter connection. Configure a DHCP reservation or static lease in your router for the printer's MAC address.
 
 ### Network Ports
 
